@@ -1,4 +1,4 @@
-# JS FLOW - DAY1
+# JS FLOW - Day1
 
 - 데이터 타입 : 기본형과 참조형 종류 및 차이점
 - 호이스팅
@@ -188,19 +188,44 @@ var c = function(){
 
 ```javascript
 // 출력 : a + b = 값
-function sum(){
-	return a + ' + ' + b ' = ' + (a + b);
+function sum(a,b){
+	return a + ' + ' + b + ' = ' + (a + b);
 }
-sum(1,2);
+sum(1,2); // 출력 3;
 /*
 	중략
 	:중간에 많은 함수로 인해서 누군가가 작성한 함수를 모르고 같은 함수를 썼을경우
 */
 
 // 출력 : 값
-function sum(){
+function sum(a,b){
 	return a + b;
 }
-sum(3,4);
+sum(3,4); // 출력 7
+
+/*
+	처음 함수에서는 a + b = 값이 나와야하는데 함수호이스팅으로 인해 아래함수가
+	호이스팅이되어서 출력값이 7이 나온다.
+*/
 ```
 
+##### 함수표현식
+
+> 함수 호이스팅이 발생하지않음, 안전하고 예측가능한 소스가됨
+
+```javascript
+var sum = function(a,b){
+	return a + ' + ' + b ' = ' + (a + b);
+}
+sum(1,2); //출력 a + b = 값 
+
+var sum = function(a,b){
+	return a + b;
+}
+sum(3,4); //출력 값
+
+```
+
+함수선언문과 표현식은 클로저에서 달리 나오게된다.
+
+**결론 : 함수 선언식은 함수 호이스팅이 발생, 함수 표현식은 호이스팅이 발생하지 않는다.**
